@@ -1,0 +1,375 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: apiteam@swagger.io
+  description: Server for SWKOM
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: PaperlessProject_Englert_Moisejev_Bartosik
+  version: 1.0.11
+servers:
+- url: http://localhost:8080
+tags:
+- description: Routing for Files
+  name: files
+- description: Routing for Users
+  name: users
+paths:
+  /files:
+    get:
+      description: Get all files
+      operationId: findFiles
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/File'
+                type: array
+          description: successful operation
+        "400":
+          description: Bad request
+      summary: get all files
+      tags:
+      - files
+      x-accepts: application/json
+      x-tags:
+      - tag: files
+    post:
+      description: upload a new file
+      operationId: uploadFile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+        description: upload a new file
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+          description: Successful operation
+        "405":
+          description: Invalid input
+      summary: upload a new file
+      tags:
+      - files
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: files
+    put:
+      description: update a file
+      operationId: updateFile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+        description: update a file
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+          description: Successful operation
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: File not found
+        "405":
+          description: Validation exception
+      summary: update a file
+      tags:
+      - files
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: files
+  /files/findByName/{name}:
+    delete:
+      description: Only be done by the logged in user.
+      operationId: deleteFile
+      parameters:
+      - description: Name to be deleted
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+          description: Successful operation
+        "400":
+          description: Invalid name supplied
+        "404":
+          description: File not found
+      summary: Delete file
+      tags:
+      - files
+      x-accepts: application/json
+      x-tags:
+      - tag: files
+    get:
+      description: "Many names, string, sep by comma"
+      operationId: findFilesByName
+      parameters:
+      - description: Names for filtering
+        explode: true
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/File'
+                type: array
+          description: successful operation
+        "400":
+          description: Invalid name
+      summary: Find files by name
+      tags:
+      - files
+      x-accepts: application/json
+      x-tags:
+      - tag: files
+  /users:
+    get:
+      description: Get all Users
+      operationId: getUsers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/User'
+                type: array
+          description: successful operation
+        "400":
+          description: Bad request
+      summary: get all Users
+      tags:
+      - users
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    post:
+      description: create new User
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: create new User
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: Successful operation
+        "405":
+          description: Invalid input
+      summary: create new User
+      tags:
+      - users
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    put:
+      description: update a User
+      operationId: updateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: update a user
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: Successful operation
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: User not found
+        "405":
+          description: Validation exception
+      summary: update a User
+      tags:
+      - users
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+  /users/findByName/{name}:
+    delete:
+      description: Only be done by the logged in user.
+      operationId: deleteUser
+      parameters:
+      - description: Name to be deleted
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: Successful operation
+        "400":
+          description: Invalid name supplied
+        "404":
+          description: User not found
+      summary: Delete User
+      tags:
+      - users
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+    get:
+      description: "Many names, string, sep by comma"
+      operationId: findUsersByName
+      parameters:
+      - description: Names for filtering
+        explode: true
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/User'
+                type: array
+          description: successful operation
+        "400":
+          description: Invalid name
+      summary: Finds Users by name
+      tags:
+      - users
+      x-accepts: application/json
+      x-tags:
+      - tag: users
+components:
+  requestBodies:
+    Files:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/File'
+      description: File that is uploaded
+    Users:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+      description: User that is created
+  schemas:
+    File:
+      example:
+        size: 100
+        data: data
+        created: 2000-01-23T04:56:07.000+00:00
+        name: Testname_1
+        modified: 2000-01-23T04:56:07.000+00:00
+        id: 10
+        type: pdf
+      properties:
+        id:
+          example: 10
+          format: int64
+          type: integer
+        name:
+          example: Testname_1
+          type: string
+        size:
+          example: 100
+          format: double
+          type: number
+        type:
+          example: pdf
+          type: string
+        created:
+          format: date-time
+          type: string
+        modified:
+          format: date-time
+          type: string
+        data:
+          format: byte
+          type: string
+      type: object
+    User:
+      example:
+        password: password
+        role: 0
+        id: 10
+        email: email
+        username: username
+      properties:
+        id:
+          example: 10
+          format: int64
+          type: integer
+        username:
+          type: string
+        email:
+          format: email
+          type: string
+        password:
+          format: password
+          type: string
+        role:
+          type: integer
+      type: object
+    ApiResponse:
+      properties:
+        code:
+          format: int32
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+      type: object
+      xml:
+        name: '##default'
