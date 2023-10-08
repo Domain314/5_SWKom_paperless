@@ -1,0 +1,15 @@
+version: '3'
+services:
+  spring-app:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Map the Spring Boot app port to the host
+
+  paperless-ngx-ui:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"  # Map the Paperless-NGX-UI port to the host
