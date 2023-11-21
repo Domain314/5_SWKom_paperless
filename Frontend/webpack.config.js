@@ -96,32 +96,7 @@ const indexConfig = {
     ],
 };
 
-const backendConfig = {
-    ...rootConfig,
-    entry: ['./src/backend/backend.js'],
-    output: {
-        filename: '[name].backend.js',
-        path: path.resolve(__dirname, 'public/assets/scripts/backend'),
-        publicPath: '/assets/scripts/',
-        sourceMapFilename: '[name].[contenthash:8].map',
-        chunkFilename: '[name].backend.js',
-    },
-    plugins: [
-        ...rootConfig.plugins,
-        new HtmlWebpackPlugin({
-            title: "gen-bedrock",
-            hash: true,
-            filename: '../../../backend/index.html', //relative to root of the application
-            chunks: ['vendor-react', 'main'],
-            path: path.resolve(__dirname, '/assets/scripts/backend/'),
-            template: './src/backend.html',
-        }),
-
-    ],
-};
-
 module.exports = [
     indexConfig
-    // backendConfig
 ];
 

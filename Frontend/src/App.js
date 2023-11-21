@@ -9,8 +9,6 @@ const Footer = lazy(() => import("./components/Footer"));
 const Impressum = lazy(() => import("./components/pages/Impressum"));
 const Datenschutz = lazy(() => import("./components/pages/Datenschutz"));
 
-import Custom from "./components/parts/Custom";
-
 // import Navbar from "./components/Navbar";
 // import Footer from "./components/Footer";
 
@@ -26,17 +24,6 @@ function App() {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    // const [theme, setTheme] = useState("dark");
-
-    // useEffect(() => {
-    //     if (theme === "dark") {
-    //         document.documentElement.classList.add("dark");
-    //     } else {
-    //         document.documentElement.classList.remove("dark");
-    //     }
-    // }, [theme]);
-
 
     useEffect(() => {
         // initObserver();
@@ -57,11 +44,10 @@ function App() {
                                     </Suspense>
                                 </div>
 
-                                <Custom/>
                                 {/* <div className="w-full flex justify-center bg-[#f8f9fa] dark:bg-[#000000]">
                                     <div className="w-full max-w-[1600px] px-4 md:px-12 2xl:px-4 my-[150px]">
                                         <Suspense fallback={<div></div>}>
-                                            <LazyComponent children={<Social />} fallback={<div></div>} />
+                                            <LazyComponent children={<Start />} fallback={<div></div>} />
 
                                         </Suspense>
                                     </div>
