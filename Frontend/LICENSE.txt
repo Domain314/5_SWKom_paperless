@@ -1,0 +1,71 @@
+Software License Agreement
+(german version below)
+
+1. Scope
+
+This license applies to the software package (the "Software Package") and source code (the "Source Code") provided by [Your Company Name] ("we", "us", "our").
+
+2. Grant of License
+
+We grant you a non-exclusive, non-transferable license to use the Software Package, subject to the terms of this license agreement. You may not sell, lease, loan, or sublicense the Software Package without our prior written consent.
+
+3. Copyrights
+
+We retain all rights to the Software Package and Source Code. You acknowledge that all copyrights and other intellectual property rights in the Software Package and Source Code belong to us.
+
+4. Restrictions
+
+You may not modify the Software Package or Source Code, create derivative works, decompile, disassemble, or otherwise attempt to extract the source code from the Software Package.
+
+5. Disclaimer
+
+The Software Package is provided "as is" and without any warranty. We hereby expressly disclaim all express or implied warranties, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+
+6. Limitation of Liability
+
+Under no circumstances shall we be liable to you for any direct, indirect, incidental, special, exemplary, or consequential damages arising from your use or inability to use the Software Package.
+
+7. Termination
+
+We may terminate this license at any time, with or without cause, by notifying you. Upon termination of this license, you must cease use of the Software Package and destroy all copies of the Software Package and Source Code.
+
+8. Governing Law
+
+This license is governed by the laws of Vienna/Asutria and you agree to submit to the jurisdiction of the courts in Vienna/Asutria.
+
+-------------------------------------------------------------------------------
+GERMAN
+
+Software-Lizenzvereinbarung
+
+1. Geltungsbereich
+
+Diese Lizenz gilt für das Softwarepaket (das "Softwarepaket") und für den Quellcode (der "Quellcode"), die von [Ihr Unternehmensname] ("wir", "uns", "unser") bereitgestellt werden.
+
+2. Gewährung der Lizenz
+
+Wir gewähren Ihnen eine nicht-exklusive, nicht übertragbare Lizenz zur Nutzung des Softwarepakets, vorbehaltlich der Bedingungen dieser Lizenzvereinbarung. Sie dürfen das Softwarepaket nicht verkaufen, vermieten, verleihen oder Unterlizenzen vergeben, ohne unsere vorherige schriftliche Zustimmung.
+
+3. Urheberrechte
+
+Wir behalten uns alle Rechte an dem Softwarepaket und dem Quellcode vor. Sie erkennen an, dass alle Urheberrechte und anderen geistigen Eigentumsrechte an dem Softwarepaket und dem Quellcode uns gehören.
+
+4. Beschränkungen
+
+Sie dürfen das Softwarepaket oder den Quellcode nicht ändern, abgeleitete Werke erstellen, das Softwarepaket oder den Quellcode dekompilieren, disassemblieren oder anderweitig versuchen, den Quellcode aus dem Softwarepaket zu extrahieren.
+
+5. Haftungsausschluss
+
+Das Softwarepaket wird "wie es ist" und ohne jegliche Garantie zur Verfügung gestellt. Wir lehnen hiermit ausdrücklich alle ausdrücklichen oder stillschweigenden Garantien ab, einschließlich, aber nicht beschränkt auf die implizierten Garantien der Marktgängigkeit, der Eignung für einen bestimmten Zweck und der Nichtverletzung.
+
+6. Haftungsbeschränkung
+
+Unter keinen Umständen haften wir Ihnen gegenüber für direkte, indirekte, zufällige, besondere, exemplarische oder Folgeschäden, die sich aus Ihrer Nutzung oder Unfähigkeit zur Nutzung des Softwarepakets ergeben.
+
+7. Beendigung
+
+Wir können diese Lizenz jederzeit mit oder ohne Grund kündigen, indem wir Sie darüber informieren. Bei Beendigung dieser Lizenz müssen Sie die Nutzung des Softwarepakets einstellen und alle Kopien des Softwarepakets und des Quellcodes vernichten.
+
+8. Geltendes Recht
+
+Diese Lizenz unterliegt dem Recht Wien/Österreich und Sie stimmen zu, sich der Gerichtsbarkeit der Gerichte in Wien/Österreich zu unterwerfen.
