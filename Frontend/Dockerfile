@@ -2,7 +2,7 @@
 FROM nginx:1.23.4-alpine
 
 # Copy the build files
-COPY ./static /usr/share/nginx/html
+COPY ./public /usr/share/nginx/html
 
 # Copy the nginx configuration
-COPY ./static/nginx.conf /etc/nginx/conf.d/default.conf
+# COPY ./static/nginx.conf /etc/nginx/conf.d/default.conf
