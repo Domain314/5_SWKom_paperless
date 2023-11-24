@@ -31,7 +31,7 @@ function App() {
 
 
     return (
-        <div>
+        <div className="text-[#F3F3F4]">
             <BrowserRouter>
                 <Routes>
 
@@ -44,22 +44,12 @@ function App() {
                                     </Suspense>
                                 </div>
 
-                                {/* <div className="w-full flex justify-center bg-[#f8f9fa] dark:bg-[#000000]">
-                                    <div className="w-full max-w-[1600px] px-4 md:px-12 2xl:px-4 my-[150px]">
-                                        <Suspense fallback={<div></div>}>
-                                            <LazyComponent children={<Start />} fallback={<div></div>} />
 
-                                        </Suspense>
-                                    </div>
-                                </div> */}
 
-                                {/* Footer */}
-                                <div className="w-full flex justify-center bg-[#f8f9fa] dark:bg-[#000000] py-10">
-                                    <div className="w-full max-w-[1600px] px-4 md:px-12 2xl:px-4">
-                                        <Suspense fallback={<div></div>}>
-                                            <Footer />
-                                        </Suspense>
-                                    </div>
+                                <div className="">
+                                    <Suspense fallback={<div></div>}>
+                                        <Footer />
+                                    </Suspense>
                                 </div>
 
                                 {/* GoUp Button */}

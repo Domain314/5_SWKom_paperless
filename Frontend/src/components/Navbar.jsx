@@ -1,6 +1,7 @@
 import React from "react";
-import ButtonStandard from "./standards/ButtonStandard";
 
+import Logo from "../assets/img/logo/logo.svg";
+import PlaceholderProfilPic from "../assets/img/placeholder/dominik.jpg";
 
 function Navbar({ }) {
 
@@ -11,25 +12,25 @@ function Navbar({ }) {
     return (
         <div className="debug-1 w-full z-[10000]">
             <div className="w-full flex justify-center">
-                <nav className="w-full flex items-center max-w-full relative">
+                <nav className="w-full flex justify-between items-center max-w-full p-4">
                     {/* Logo */}
                     <button
                         aria-label="scroll to top"
                         href="#hero"
                         className="navigation-scroll"
                     >
-                        <img className="h-[45px] md:h-[55px] lg:h-[60px]" src="" alt="Logo" />
+                        <img className="h-[45px] md:h-[55px] lg:h-[60px]" src={Logo} alt="Logo Doc" />
                     </button>
 
-                    {/* className optional for overwriting classes (zB color) */}
-                    <ButtonStandard content="hello" onClick={clickHandler} className="bg-red-300" />
+                    <div className="flex items-center gap-4">
+                        <button>
+                            <p className="underline font-extrabold">Logout</p>
+                        </button>
 
-                    <div className="flex gap-2 items-center ml-auto">
-
-
-
+                        <button>
+                            <img className="rounded-full w-[40px] md:w-[45px] lg:w-[50px] h-[40px] md:h-[45px] lg:h-[50px]" src={PlaceholderProfilPic} alt="Profile Picture" />
+                        </button>
                     </div>
-
 
                 </nav>
             </div>
