@@ -9,7 +9,7 @@ const DocumentPreview = ({ name, type, sizeKB }) => {
 
     function convertKBtoMB(kilobytes) {
         const megabytes = kilobytes / 1024;
-        return `${megabytes.toFixed(2)} MB`;
+        return `${megabytes.toFixed(2)}mb`;
     }
 
     const handleOnDeleteClick = () => {

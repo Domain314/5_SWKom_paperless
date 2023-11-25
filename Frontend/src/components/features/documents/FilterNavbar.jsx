@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CheckIcon from "../../../assets/img/icons/check.svg";
 import WarningIcon from "../../../assets/img/icons/warning.svg";
@@ -13,8 +13,9 @@ const FilterNavbar = () => {
 
     const [name, setName] = useState("Dominik Englert");
     const [searchText, setSearchText] = useState("");
-    const [showWarning, setShowWarning] = useState(true);
-    const options = [
+    const [showWarning, setShowWarning] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const sortOptions = [
         { value: 'newest', label: 'Neuste' },
         { value: 'oldest', label: 'Älteste' },
         { value: 'favorites', label: 'Favoriten' },
@@ -24,16 +25,44 @@ const FilterNavbar = () => {
         setSearchText(e.target.value);
     }
 
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+    };
+
     const handleUploadButton = () => {
-        console.log("UPLOAD TBD");
-    }
+        document.getElementById('fileInput').click();
+    };
 
     const handleReloadButton = () => {
         console.log("RELOAD TBD");
     }
 
+    const handleFileUpload = () => {
+        if (selectedFile) {
+            // Perform the API call to upload the file
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+
+            // Replace with your API call
+            fetch('YOUR_API_ENDPOINT', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        }
+    };
+
+    useEffect(() => {
+        // Whenever the selectedFile changes, upload it
+        if (selectedFile) {
+            handleFileUpload();
+        }
+    }, [selectedFile]);
+
     return (
-        <div className="w-full sticky top-4 bg-[#1C1D26] p-4 lg:p-6 rounded-[10px] z-[10000]">
+        <div className="w-full sticky top-4 bg-[#1C1D26] p-4 lg:p-6 rounded-[10px] z-[10000] top-bottom-shadow">
 
             {/* top line (name + status) */}
             <div className="w-full flex justify-between items-center text-[#F3F3F4]">
@@ -56,8 +85,15 @@ const FilterNavbar = () => {
                 <SearchInput searchText={searchText} handleSearchChange={handleSearchChange} />
 
                 <div className="w-full md:w-auto flex justify-between md:justify-center items-center gap-4">
-                    <SortPicker options={options} />
+                    <SortPicker options={sortOptions} />
 
+                    {/* HIDDEN INPUT FOR FILE UPLOAD */}
+                    <input
+                        type="file"
+                        id="fileInput"
+                        style={{ display: 'none' }}
+                        onChange={handleFileChange}
+                    />
                     <div className="flex items-center gap-4">
                         <UploadButton onClick={handleUploadButton} />
 
