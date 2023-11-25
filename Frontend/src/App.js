@@ -18,6 +18,9 @@ const Datenschutz = lazy(() => import("./components/pages/Datenschutz"));
 // import { initObserver } from "./scrollObserver";
 
 import { consoleAsciiArt } from "./utility/consoleLogger"
+import BrowseDocuments from "./components/features/documents/BrowseDocuments";
+
+import ArrowUp from "../src/assets/img/icons/arrow-up.svg";
 
 function App() {
 
@@ -44,7 +47,7 @@ function App() {
                                     </Suspense>
                                 </div>
 
-
+                                <BrowseDocuments />
 
                                 <div className="">
                                     <Suspense fallback={<div></div>}>
@@ -55,10 +58,10 @@ function App() {
                                 {/* GoUp Button */}
                                 <button
                                     onClick={scrollToTop}
-                                    className="fixed bottom-5 right-5 px-3 py-4 bg-[#000000] hover:bg-[#01abff] transition-all"
+                                    className="fixed bottom-5 right-5 px-3 py-3 rounded-full bg-[#0020FF] hover:bg-[#15161D] transition-all"
                                     aria-label="scroll to top"
                                 >
-                                    <img src="" alt="Arrow up" />
+                                    <img className="w-[30px] h-[30px]" src={ArrowUp} alt="Arrow up" />
                                 </button>
 
                             </>

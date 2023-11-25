@@ -1,7 +1,8 @@
 import React from "react";
 
 import Logo from "../assets/img/logo/logo.svg";
-import PlaceholderProfilPic from "../assets/img/placeholder/dominik.jpg";
+import PlaceholderProfilPic from "../assets/img/icons/person.svg";
+import Container from "./features/container/Container";
 
 function Navbar({ }) {
 
@@ -10,9 +11,10 @@ function Navbar({ }) {
     }
 
     return (
-        <div className="debug-1 w-full z-[10000]">
-            <div className="w-full flex justify-center">
-                <nav className="w-full flex justify-between items-center max-w-full p-4">
+        <div className="z-[10000]">
+            <Container>
+
+                <nav className="w-full flex justify-between items-center">
                     {/* Logo */}
                     <button
                         aria-label="scroll to top"
@@ -28,12 +30,14 @@ function Navbar({ }) {
                         </button>
 
                         <button>
-                            <img className="rounded-full w-[40px] md:w-[45px] lg:w-[50px] h-[40px] md:h-[45px] lg:h-[50px]" src={PlaceholderProfilPic} alt="Profile Picture" />
+                            <img className="rounded-full w-[30px] md:w-[35px] lg:w-[40px] h-[30px] md:h-[35px] lg:h-[40px]" src={PlaceholderProfilPic} alt="Profile Picture" />
                         </button>
                     </div>
 
                 </nav>
-            </div>
+
+            </Container>
+
 
 
         </div>

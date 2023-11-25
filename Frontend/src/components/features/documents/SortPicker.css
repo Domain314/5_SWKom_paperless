@@ -1,0 +1,31 @@
+.dropdown-container {
+    /* Adjust width as needed */
+}
+
+.dropdown {
+    padding: 12px 20px;
+    border-radius: 50px;
+    background-color: #15161D;
+    color: #f3f3f492;
+    /* Text color */
+    -webkit-appearance: none;
+    /* Removes default styling in WebKit browsers */
+    -moz-appearance: none;
+    /* Removes default styling in Firefox */
+    appearance: none;
+    /* Standard way to remove default styling */
+    background-image: url('../../../assets/img/icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    /* Arrow position */
+}
+
+.dropdown::-ms-expand {
+    display: none;
+    /* Removes default arrow in IE */
+}
+
+.dropdown:focus {
+    outline: none;
+    border-color: #007bff;
+}

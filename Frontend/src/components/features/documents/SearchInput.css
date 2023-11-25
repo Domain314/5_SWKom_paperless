@@ -1,0 +1,32 @@
+.input-icon-wrapper {
+    position: relative;
+    max-width: 500px;
+    /* Set maximum width for the wrapper */
+    width: 100%;
+    /* Make the wrapper take full width of its parent */
+}
+
+.input-icon-wrapper .placeholder-icon {
+    position: absolute;
+    left: 10px;
+    /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #15161D;
+    /* Placeholder color */
+}
+
+.input-icon-wrapper input {
+    width: 100%;
+    /* Make the input take full width of its wrapper */
+    padding-left: 50px;
+    padding-right: 10px;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    border-radius: 60px;
+    background-color: #15161D;
+    border: none;
+    /* Optional: removes the border */
+    color: #F3F3F4;
+    /* Optional: changes the text color */
+}
