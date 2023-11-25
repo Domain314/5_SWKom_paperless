@@ -13,7 +13,7 @@ const FilterNavbar = () => {
 
     const [name, setName] = useState("Dominik Englert");
     const [searchText, setSearchText] = useState("");
-    const [showWarning, setShowWarning] = useState(false);
+    const [showWarning, setShowWarning] = useState(true);
     const [selectedFile, setSelectedFile] = useState(null);
     const sortOptions = [
         { value: 'newest', label: 'Neuste' },

@@ -19,10 +19,6 @@ const BrowseDocuments = () => {
                         sizeKB={file.sizeKB}
                     />
                 ))}
-
-                <DocumentPreview name={"Document Name"} type={'PDF'} sizeKB={3250} />
-
-                <DocumentPreview name={"Document Name"} type={'PDF'} sizeKB={3250} />
             </div>
 
 
