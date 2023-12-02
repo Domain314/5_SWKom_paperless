@@ -10,6 +10,6 @@ osascript -e "tell application \"Terminal\" to do script \"cd '$SCRIPT_DIR' && n
 osascript -e "tell application \"Terminal\" to do script \"cd '$SCRIPT_DIR' && firebase serve --only hosting\""
 
 # Open terminal and run "browser-sync start --config bs-config.js"
-osascript -e "tell application \"Terminal\" to do script \"cd '$SCRIPT_DIR' && browser-sync start --config bs-config.js\""
+osascript -e "tell application \"Terminal\" to do script \"cd '$SCRIPT_DIR' && sudo browser-sync start --config bs-config.js\""
 
 echo "All terminals opened!"

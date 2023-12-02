@@ -7,13 +7,15 @@ import ReloadButton from "./ReloadButton";
 import SortPicker from "./SortPicker";
 import SearchInput from "./SearchInput";
 
+import { toast } from 'react-toastify';
+
 import './FilterNavbar.css';
 
 const FilterNavbar = () => {
 
     const [name, setName] = useState("Dominik Englert");
     const [searchText, setSearchText] = useState("");
-    const [showWarning, setShowWarning] = useState(true);
+    const [showWarning, setShowWarning] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const sortOptions = [
         { value: 'newest', label: 'Neuste' },
@@ -34,17 +36,31 @@ const FilterNavbar = () => {
     };
 
     const handleReloadButton = () => {
-        console.log("RELOAD TBD");
+        fetch('http://localhost:8081/') // Adjust the URL to your backend endpoint
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Displaying file metadata in a toast
+                data.forEach(file => {
+                    toast.info(`File: ${file.name}, Size: ${file.size}, Last Modified: ${file.lastModified}`);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching files:', error);
+                toast.error('Error fetching files');
+            });
     }
 
     const handleFileUpload = () => {
         if (selectedFile) {
-            // Perform the API call to upload the file
             const formData = new FormData();
             formData.append('file', selectedFile);
 
-            // Replace with your API call
-            fetch('YOUR_API_ENDPOINT', {
+            fetch('http://localhost:8081/files/upload', {
                 method: 'POST',
                 body: formData,
             })
@@ -53,6 +69,8 @@ const FilterNavbar = () => {
                 .catch(error => console.error('Error:', error));
         }
     };
+
+
 
     useEffect(() => {
         // Whenever the selectedFile changes, upload it

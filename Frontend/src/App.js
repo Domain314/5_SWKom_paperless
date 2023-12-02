@@ -21,6 +21,8 @@ import { consoleAsciiArt } from "./utility/consoleLogger"
 import BrowseDocuments from "./components/features/documents/BrowseDocuments";
 
 import ArrowUp from "../src/assets/img/icons/arrow-up.svg";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -35,6 +37,11 @@ function App() {
 
     return (
         <div className="text-[#F3F3F4]">
+
+            <div className="z-[15000]">
+                <ToastContainer />
+            </div>
+
             <BrowserRouter>
                 <Routes>
 
