@@ -3,10 +3,14 @@ import FilterNavbar from "./FilterNavbar";
 import Container from "../container/Container";
 import DocumentPreview from "./DocumentPreview";
 import demoFiles from '../../../utility/helperData.js';
+import SplashScreen from "../splashscreen/SplashScreen.jsx";
 
 const BrowseDocuments = () => {
     return (
         <Container>
+            
+            <SplashScreen />
+
             <FilterNavbar />
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">

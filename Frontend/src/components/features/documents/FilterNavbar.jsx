@@ -11,17 +11,19 @@ import { toast } from 'react-toastify';
 
 import './FilterNavbar.css';
 
-const FilterNavbar = () => {
+const FilterNavbar = ({ files, setFiles, sortOrder, setSortOrder }) => {
 
-    const [name, setName] = useState("Dominik Englert");
+    const [name, setName] = useState("Admin");
     const [searchText, setSearchText] = useState("");
-    const [showWarning, setShowWarning] = useState(false);
+    const [showLoading, setShowLoading] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const sortOptions = [
-        { value: 'newest', label: 'Neuste' },
-        { value: 'oldest', label: 'Älteste' },
-        { value: 'favorites', label: 'Favoriten' },
+        { value: 'newest', label: 'Newest' },
+        { value: 'oldest', label: 'Oldest' }
     ];
+
+    
+
 
     const handleSearchChange = (e) => {
         setSearchText(e.target.value);
@@ -36,27 +38,31 @@ const FilterNavbar = () => {
     };
 
     const handleReloadButton = () => {
-        fetch('http://localhost:8081/') // Adjust the URL to your backend endpoint
+        setShowLoading(true);
+        fetch('http://localhost:8081/files/get/all')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
+                setShowLoading(false);
                 return response.json();
             })
-            .then(data => {
-                // Displaying file metadata in a toast
-                data.forEach(file => {
-                    toast.info(`File: ${file.name}, Size: ${file.size}, Last Modified: ${file.lastModified}`);
-                });
+            .then(newFiles => {
+                // Sort and update the files list
+                setFiles(sortFiles(newFiles, sortOrder));
+                setShowLoading(false);
             })
             .catch(error => {
+                setShowLoading(false);
                 console.error('Error fetching files:', error);
                 toast.error('Error fetching files');
             });
-    }
+    };
 
     const handleFileUpload = () => {
         if (selectedFile) {
+            setShowLoading(true);
+
             const formData = new FormData();
             formData.append('file', selectedFile);
 
@@ -65,12 +71,35 @@ const FilterNavbar = () => {
                 body: formData,
             })
                 .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => console.error('Error:', error));
+                .then(uploadedFile => {
+                    console.log("Uploaded file response:", uploadedFile); // Log the response
+                    // Prepend the new file to the existing files list
+                    setFiles(prevFiles => [uploadedFile, ...prevFiles]);
+                    setShowLoading(false);
+                })
+                .catch(error => {
+                    setShowLoading(false);
+                    console.error('Error:', error);
+                    console.log("Error response:", error.response); // Log error response if available
+                });
         }
     };
 
+    const sortFiles = (files, sortOrder) => {
+        return files.sort((a, b) => {
+            const dateA = new Date(a.changedTime);
+            const dateB = new Date(b.changedTime);
+            if (sortOrder === 'newest') {
+                return dateB - dateA; // Sort by descending order for newest
+            } else {
+                return dateA - dateB; // Sort by ascending order for oldest
+            }
+        });
+    };
 
+    const handleSortChange = (selectedOption) => {
+        setSortOrder(selectedOption.value);
+    };
 
     useEffect(() => {
         // Whenever the selectedFile changes, upload it
@@ -79,6 +108,13 @@ const FilterNavbar = () => {
         }
     }, [selectedFile]);
 
+    // useEffect for sorting files
+    useEffect(() => {
+        // Sort files only when sortOrder changes
+        const sortedFiles = sortFiles([...files], sortOrder);
+        setFiles(sortedFiles);
+    }, [sortOrder]); // Depend only on sortOrder
+
     return (
         <div className="w-full sticky top-4 bg-[#1C1D26] p-4 lg:p-6 rounded-[10px] z-[10000] top-bottom-shadow">
 
@@ -86,13 +122,13 @@ const FilterNavbar = () => {
             <div className="w-full flex justify-between items-center text-[#F3F3F4]">
 
                 <div className="flex items-center gap-1">
-                    <p>Dokumente von</p>
+                    <p>Documents by</p>
                     <p className="font-extrabold">{name}</p>
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <img className="w-[25px] h-[25px]" src={(showWarning) ? WarningIcon : CheckIcon} alt="Check Icon" />
-                    <p className="opacity-60 hidden md:block">{(showWarning) ? "loading..." : "all saved"}</p>
+                    <img className="w-[25px] h-[25px]" src={(showLoading) ? WarningIcon : CheckIcon} alt="Check Icon" />
+                    <p className="opacity-60 hidden md:block">{(showLoading) ? "loading..." : "all saved"}</p>
                 </div>
 
             </div>
@@ -103,7 +139,7 @@ const FilterNavbar = () => {
                 <SearchInput searchText={searchText} handleSearchChange={handleSearchChange} />
 
                 <div className="w-full md:w-auto flex justify-between md:justify-center items-center gap-4">
-                    <SortPicker options={sortOptions} />
+                    <SortPicker options={sortOptions} onChange={handleSortChange} />
 
                     {/* HIDDEN INPUT FOR FILE UPLOAD */}
                     <input

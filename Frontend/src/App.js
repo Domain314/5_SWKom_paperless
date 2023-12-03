@@ -23,6 +23,7 @@ import BrowseDocuments from "./components/features/documents/BrowseDocuments";
 import ArrowUp from "../src/assets/img/icons/arrow-up.svg";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DocumentBrowser from "./components/pages/DocumentBrowser";
 
 function App() {
 
@@ -54,7 +55,8 @@ function App() {
                                     </Suspense>
                                 </div>
 
-                                <BrowseDocuments />
+                                {/* <BrowseDocuments /> */}
+                                <DocumentBrowser />
 
                                 <div className="">
                                     <Suspense fallback={<div></div>}>
